@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<context version="7.1.10.209">
+    <scope type="Project" name="srtEditor">
+        <architecture>
+            <element type="Layer" name="Starter">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="eu.eyan.srteditor.starter.**"/>
+                </element>
+                <dependency toName="Project|srtEditor::LayerGroup|gui" type="AllowedDependency"/>
+            </element>
+            <element type="Layer" name="data">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="eu.eyan.srteditor.data.**"/>
+                </element>
+                <stereotype name="Public"/>
+            </element>
+            <element type="LayerGroup" name="gui">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="eu.eyan.srteditor.gui.**"/>
+                </element>
+                <element type="Layer" name="model">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="eu.eyan.srteditor.gui.model.**"/>
+                    </element>
+                </element>
+                <element type="Layer" name="view">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="eu.eyan.srteditor.gui.view.**"/>
+                    </element>
+                </element>
+                <element type="Layer" name="controller">
+                    <element type="TypeFilter" name="Assignment">
+                        <element type="IncludeTypePattern" name="eu.eyan.srteditor.gui.controller.**"/>
+                    </element>
+                    <dependency toName="Project|srtEditor::LayerGroup|gui::Layer|model" type="AllowedDependency"/>
+                    <dependency toName="Project|srtEditor::LayerGroup|gui::Layer|view" type="AllowedDependency"/>
+                </element>
+                <dependency toName="Project|srtEditor::Layer|parser" type="AllowedDependency"/>
+            </element>
+            <element type="Layer" name="parser">
+                <element type="TypeFilter" name="Assignment">
+                    <element type="IncludeTypePattern" name="eu.eyan.srteditor.parser.**"/>
+                </element>
+            </element>
+        </architecture>
+        <workspace>
+            <element type="JavaRootDirectory" name="target/classes">
+                <reference name="Project|srtEditor::BuildUnit|srtEditor"/>
+            </element>
+            <element type="JavaRootDirectory" name="src/main/java">
+                <reference name="Project|srtEditor::BuildUnit|srtEditor"/>
+            </element>
+        </workspace>
+        <physical>
+            <element type="BuildUnit" name="srtEditor"/>
+        </physical>
+    </scope>
+    <scope type="External" name="External">
+        <element type="TypeFilter" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+            <element type="ExcludeTypePattern" name="java.io.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.annotation.*"/>
+            <element type="ExcludeTypePattern" name="java.lang.ref.*"/>
+            <element type="ExcludeTypePattern" name="java.math.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.channels.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.channels.spi.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.charset.*"/>
+            <element type="ExcludeTypePattern" name="java.nio.charset.spi.*"/>
+            <element type="ExcludeTypePattern" name="java.text.*"/>
+            <element type="ExcludeTypePattern" name="java.util.*"/>
+            <element type="ExcludeTypePattern" name="java.util.jar.*"/>
+            <element type="ExcludeTypePattern" name="java.util.prefs.*"/>
+            <element type="ExcludeTypePattern" name="java.util.regex.*"/>
+            <element type="ExcludeTypePattern" name="java.util.zip.*"/>
+        </element>
+    </scope>
+    <scope type="Global" name="Global">
+        <element type="Configuration" name="Configuration"/>
+        <element type="TypeFilter" name="Filter">
+            <element type="IncludeTypePattern" name="**"/>
+        </element>
+    </scope>
+</context>

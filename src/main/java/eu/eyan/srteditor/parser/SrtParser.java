@@ -1,4 +1,4 @@
-package srteditor.parser;
+package eu.eyan.srteditor.parser;
 
 import static com.google.common.collect.Lists.newArrayList;
 
@@ -6,12 +6,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import srteditor.Srt;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.io.Files;
+
+import eu.eyan.srteditor.data.Srt;
 
 public class SrtParser {
 

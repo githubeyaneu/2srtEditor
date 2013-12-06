@@ -1,10 +1,11 @@
-package srteditor.model;
+package eu.eyan.srteditor.gui.model;
 
 import java.util.List;
 
-import srteditor.Srt;
 
 import com.jgoodies.binding.list.SelectionInList;
+
+import eu.eyan.srteditor.data.Srt;
 
 public class SrtModel {
 	private SelectionInList<Srt> list;
