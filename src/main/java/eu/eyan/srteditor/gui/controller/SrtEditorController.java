@@ -13,9 +13,9 @@ import eu.eyan.srteditor.gui.view.SrtEditorView;
 
 public class SrtEditorController implements IController
 {
-    private SrtController srtRightController = new SrtController("hu.srt");
-    private SrtController srtLeftController = new SrtController("en.srt");
-    private SrtEditorView view = new SrtEditorView();
+    private final SrtController srtRightController = new SrtController("hu.srt");
+    private final SrtController srtLeftController = new SrtController("en.srt");
+    private final SrtEditorView view = new SrtEditorView();
 
     public SrtEditorController()
     {
@@ -30,7 +30,7 @@ public class SrtEditorController implements IController
         view.savebutton.addActionListener(new ActionListener()
         {
             @Override
-            public void actionPerformed(ActionEvent e)
+            public void actionPerformed(final ActionEvent e)
             {
                 srtRightController.save();
                 srtLeftController.save();
@@ -40,7 +40,7 @@ public class SrtEditorController implements IController
         view.copyTimesFromLeftToRightButton.addActionListener(new ActionListener()
         {
             @Override
-            public void actionPerformed(ActionEvent e)
+            public void actionPerformed(final ActionEvent e)
             {
                 copyTimes(srtLeftController.getList(), srtRightController.getList());
                 srtRightController.refresh();
@@ -51,7 +51,7 @@ public class SrtEditorController implements IController
         view.copyTimesFromRightToLeftButton.addActionListener(new ActionListener()
         {
             @Override
-            public void actionPerformed(ActionEvent e)
+            public void actionPerformed(final ActionEvent e)
             {
                 copyTimes(srtRightController.getList(), srtLeftController.getList());
                 srtLeftController.refresh();
@@ -65,7 +65,7 @@ public class SrtEditorController implements IController
         return view.getComponent();
     }
 
-    private void copyTimes(List<Srt> from, List<Srt> to)
+    private void copyTimes(final List<Srt> from, final List<Srt> to)
     {
         if (from.size() != to.size())
         {
