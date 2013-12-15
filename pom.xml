@@ -39,7 +39,7 @@
 			<version>2.7.0</version>
 		</dependency>
 	</dependencies>
-	
+
 	<reporting>
 		<plugins>
 			<plugin>
@@ -49,9 +49,7 @@
 				<configuration>
 					<linkXRef>false</linkXRef>
 					<targetJdk>1.6</targetJdk>
-					<rulesets>
-						<ruleset>/rulesets/basic.xml</ruleset>
-					</rulesets>
+					<!-- <rulesets> <ruleset>/rulesets/basic.xml</ruleset> </rulesets> -->
 				</configuration>
 			</plugin>
 		</plugins>

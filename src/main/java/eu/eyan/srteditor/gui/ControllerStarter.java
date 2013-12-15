@@ -4,11 +4,16 @@ import javax.swing.JFrame;
 
 import eu.eyan.srteditor.gui.controller.IController;
 
-public class ControllerStarter
+public final class ControllerStarter
 {
-    public static void inFrame(IController controller)
+
+    private ControllerStarter()
     {
-        JFrame jFrame = new JFrame();
+    }
+
+    public static void inFrame(final IController controller)
+    {
+        final JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.add(controller.getView());
         jFrame.setSize(1000, 600);
