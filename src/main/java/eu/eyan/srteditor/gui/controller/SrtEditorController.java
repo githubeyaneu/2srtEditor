@@ -5,23 +5,31 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import eu.eyan.gui.controller.IGuiController;
 import eu.eyan.srteditor.data.Srt;
 import eu.eyan.srteditor.gui.view.SrtEditorView;
 
-public class SrtEditorController implements IController
+public class SrtEditorController implements IGuiController
 {
+    public static final String TWO_SRT_EDITOR_TITLE = "2strEditor";
+
+    public static final String SCROLLPANE_NAME_LEFT = "panel.left";
+    public static final String SCROLLPANE_NAME_RIGHT = "panel.right";
+
     private final SrtController srtRightController = new SrtController("hu.srt");
     private final SrtController srtLeftController = new SrtController("en.srt");
     private final SrtEditorView view = new SrtEditorView();
 
     public SrtEditorController()
     {
-//        view.srtLeftPanel.add(srtLeftController.getView());
-        view.srtLeftPanel.add(new JLabel("xcv"));
-        view.srtRightPanel.add(srtRightController.getView());
+        view.srtLeftPanel.getViewport().add(srtLeftController.getView());
+        view.srtLeftPanel.setName(SCROLLPANE_NAME_LEFT);
+
+        view.srtRightPanel.getViewport().add(srtRightController.getView());
+        view.srtRightPanel.setName(SCROLLPANE_NAME_RIGHT);
+
         addEvents();
     }
 
@@ -32,12 +40,15 @@ public class SrtEditorController implements IController
             @Override
             public void actionPerformed(final ActionEvent e)
             {
+                // Here is a findbug to test jenkins:
                 Object o = null;
                 if (1 == System.currentTimeMillis())
                 {
                     o = new Object();
                 }
                 System.out.println(o.equals(""));
+                // End of findbug
+
                 srtRightController.save();
                 srtLeftController.save();
             }
@@ -89,4 +100,9 @@ public class SrtEditorController implements IController
         }
     }
 
+    @Override
+    public String getTitle()
+    {
+        return TWO_SRT_EDITOR_TITLE;
+    }
 }

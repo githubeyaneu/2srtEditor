@@ -8,11 +8,13 @@ Subtitle 2
 
 4
 00:00:51,260 --> 00:00:53,030
-Subtitle 3
+Subtitle 
+Newline 3
 
 5
 00:00:53,200 --> 00:00:55,880
-Subtitle 4
+Subtitle 
+newline 4
 
 6
 00:00:56,020 --> 00:00:59,440

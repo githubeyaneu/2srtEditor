@@ -1,16 +1,16 @@
 package eu.eyan.srteditor.starter;
 
-import eu.eyan.srteditor.gui.ControllerStarter;
+import eu.eyan.gui.utils.ControllerStarter;
 import eu.eyan.srteditor.gui.controller.SrtEditorController;
 
-public final class SrtEditor
+public final class TwoSrtEditor
 {
-    private SrtEditor()
+    private TwoSrtEditor()
     {
     }
 
     public static void main(final String[] args)
     {
-        ControllerStarter.inFrame(new SrtEditorController());
+        ControllerStarter.startControllerInFrame(new SrtEditorController());
     }
 }

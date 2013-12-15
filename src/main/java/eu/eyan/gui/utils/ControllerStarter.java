@@ -1,8 +1,8 @@
-package eu.eyan.srteditor.gui;
+package eu.eyan.gui.utils;
 
 import javax.swing.JFrame;
 
-import eu.eyan.srteditor.gui.controller.IController;
+import eu.eyan.gui.controller.IGuiController;
 
 public final class ControllerStarter
 {
@@ -11,13 +11,15 @@ public final class ControllerStarter
     {
     }
 
-    public static void inFrame(final IController controller)
+    public static void startControllerInFrame(final IGuiController controller)
     {
         final JFrame jFrame = new JFrame();
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.add(controller.getView());
         jFrame.setSize(1000, 600);
         jFrame.pack();
+        jFrame.setTitle(controller.getTitle());
+        jFrame.setName(controller.getTitle());
         jFrame.setVisible(true);
     }
 }
