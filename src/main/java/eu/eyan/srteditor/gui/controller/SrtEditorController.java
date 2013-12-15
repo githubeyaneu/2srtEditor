@@ -32,6 +32,12 @@ public class SrtEditorController implements IController
             @Override
             public void actionPerformed(final ActionEvent e)
             {
+                Object o = null;
+                if (1 == System.currentTimeMillis())
+                {
+                    o = new Object();
+                }
+                System.out.println(o.equals(""));
                 srtRightController.save();
                 srtLeftController.save();
             }
