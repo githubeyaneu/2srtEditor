@@ -1,8 +1,5 @@
 package eu.eyan.srteditor.gui;
 
-import static eu.eyan.srteditor.gui.controller.SrtEditorController.SCROLLPANE_NAME_LEFT;
-import static eu.eyan.srteditor.gui.controller.SrtEditorController.SCROLLPANE_NAME_RIGHT;
-
 import org.fest.swing.finder.WindowFinder;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JListFixture;
@@ -11,6 +8,8 @@ import org.junit.Before;
 import eu.eyan.srteditor.gui.controller.SrtEditorController;
 import eu.eyan.srteditor.gui.view.SrtView;
 import eu.eyan.srteditor.starter.TwoSrtEditor;
+
+import static eu.eyan.srteditor.gui.controller.SrtEditorController.*;
 
 public class AbstractEditorGuiTest extends AbstractGuiTest
 {
@@ -22,7 +21,7 @@ public class AbstractEditorGuiTest extends AbstractGuiTest
     @Before
     public void setUpWindow()
     {
-        TwoSrtEditor.main(null);
+        TwoSrtEditor.main(new String[] {});
 
         window = WindowFinder
                 .findFrame(controller.getTitle())

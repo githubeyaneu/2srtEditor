@@ -11,6 +11,8 @@ import eu.eyan.gui.controller.IGuiController;
 import eu.eyan.srteditor.data.Srt;
 import eu.eyan.srteditor.gui.view.SrtEditorView;
 
+import static javax.swing.JOptionPane.showConfirmDialog;
+
 public class SrtEditorController implements IGuiController
 {
     public static final String TWO_SRT_EDITOR_TITLE = "2strEditor";
@@ -40,15 +42,6 @@ public class SrtEditorController implements IGuiController
             @Override
             public void actionPerformed(final ActionEvent e)
             {
-                // Here is a findbug to test jenkins:
-                Object o = null;
-                if (1 == System.currentTimeMillis())
-                {
-                    o = new Object();
-                }
-                System.out.println(o.equals(""));
-                // End of findbug
-
                 srtRightController.save();
                 srtLeftController.save();
             }
@@ -84,18 +77,20 @@ public class SrtEditorController implements IGuiController
 
     private void copyTimes(final List<Srt> from, final List<Srt> to)
     {
+        // TODO: Spagetti Code:
+        // SLA, SRP, SoC
         if (from.size() != to.size())
         {
-            if (JOptionPane.showConfirmDialog(null, "Not equal number of srts! Size1: " + from.size() + ", Size2: " + to.size() + "") != JOptionPane.OK_OPTION)
+            int confirmDialogResult = showConfirmDialog(this.getView(), "Not equal number of subtitles! Size1: " + from.size() + ", Size2: " + to.size() + "");
+            if (confirmDialogResult == JOptionPane.OK_OPTION)
             {
-                return;
-            }
-        }
-        for (int i = 0; i < from.size(); i++)
-        {
-            if (to.size() > i)
-            {
-                to.get(i).setTime(from.get(i).getTime());
+                for (int i = 0; i < from.size(); i++)
+                {
+                    if (to.size() > i)
+                    {
+                        to.get(i).setTime(from.get(i).getTime());
+                    }
+                }
             }
         }
     }
