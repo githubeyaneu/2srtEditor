@@ -4,8 +4,8 @@
 	<groupId>srtEditor</groupId>
 	<artifactId>srtEditor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
-	<build>
+
+	<!-- <build>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
@@ -17,8 +17,8 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build>
-	
+	</build> -->
+
 	<dependencies>
 		<dependency>
 			<groupId>com.jgoodies</groupId>
@@ -72,5 +72,5 @@
 			</plugin>
 		</plugins>
 	</reporting>
-	
+
 </project>

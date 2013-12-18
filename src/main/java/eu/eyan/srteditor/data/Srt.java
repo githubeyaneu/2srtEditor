@@ -4,11 +4,17 @@ import java.util.List;
 
 import com.google.common.base.Joiner;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 public class Srt
 {
     private int index;
     private String time;
     private List<String> lines;
+
+    private Srt()
+    {
+    }
 
     public Srt(int index, String time, List<String> lines)
     {
@@ -53,4 +59,31 @@ public class Srt
         this.time = time;
     }
 
+    public static class Builder
+    {
+        private Srt srt = new Srt();
+
+        public Builder withIndex(int index)
+        {
+            this.srt.index = index;
+            return this;
+        }
+
+        public Builder withTime(String time)
+        {
+            this.srt.time = time;
+            return this;
+        }
+
+        public Builder withLines(String... lines)
+        {
+            this.srt.lines = newArrayList(lines);
+            return this;
+        }
+
+        public Srt build()
+        {
+            return srt;
+        }
+    }
 }
