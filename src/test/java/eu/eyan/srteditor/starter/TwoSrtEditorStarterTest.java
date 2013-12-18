@@ -1,4 +1,4 @@
-package eu.eyan.srteditor.gui.starter;
+package eu.eyan.srteditor.starter;
 
 import org.fest.swing.finder.WindowFinder;
 import org.junit.Test;

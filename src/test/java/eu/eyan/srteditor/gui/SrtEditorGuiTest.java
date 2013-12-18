@@ -2,7 +2,9 @@ package eu.eyan.srteditor.gui;
 
 import org.junit.Test;
 
-public class SrtEditorGuiTest extends AbstractEditorGuiTest
+import eu.eyan.srteditor.testutils.Abstract2SrtEditorGuiTest;
+
+public class SrtEditorGuiTest extends Abstract2SrtEditorGuiTest
 {
     @Test
     public void default_files_showing()

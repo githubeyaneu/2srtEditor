@@ -1,17 +1,18 @@
-package eu.eyan.srteditor.gui;
+package eu.eyan.srteditor.testutils;
 
 import org.fest.swing.finder.WindowFinder;
 import org.fest.swing.fixture.FrameFixture;
 import org.fest.swing.fixture.JListFixture;
 import org.junit.Before;
 
+import eu.eyan.srteditor.gui.AbstractGuiTest;
 import eu.eyan.srteditor.gui.controller.SrtEditorController;
 import eu.eyan.srteditor.gui.view.SrtView;
-import eu.eyan.srteditor.starter.TwoSrtEditor;
+import eu.eyan.srteditor.starter.SrtEditorStarter;
 
 import static eu.eyan.srteditor.gui.controller.SrtEditorController.*;
 
-public class AbstractEditorGuiTest extends AbstractGuiTest
+public class Abstract2SrtEditorGuiTest extends AbstractGuiTest
 {
     FrameFixture window;
     private final SrtEditorController controller = new SrtEditorController();
@@ -21,7 +22,7 @@ public class AbstractEditorGuiTest extends AbstractGuiTest
     @Before
     public void setUpWindow()
     {
-        TwoSrtEditor.main(new String[] {});
+        SrtEditorStarter.startEditor();
 
         window = WindowFinder
                 .findFrame(controller.getTitle())
