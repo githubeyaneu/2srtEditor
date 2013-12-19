@@ -1,5 +1,7 @@
 package eu.eyan.srteditor.gui.controller;
 
+import static javax.swing.JOptionPane.showConfirmDialog;
+
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,10 +10,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import eu.eyan.gui.controller.IGuiController;
-import eu.eyan.srteditor.data.Srt;
+import eu.eyan.srteditor.data.Subtitle;
 import eu.eyan.srteditor.gui.view.SrtEditorView;
-
-import static javax.swing.JOptionPane.showConfirmDialog;
 
 public class SrtEditorController implements IGuiController
 {
@@ -37,7 +37,7 @@ public class SrtEditorController implements IGuiController
 
     private void addEvents()
     {
-        view.savebutton.addActionListener(new ActionListener()
+        view.saveButton.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(final ActionEvent e)
@@ -75,22 +75,23 @@ public class SrtEditorController implements IGuiController
         return view.getComponent();
     }
 
-    private void copyTimes(final List<Srt> from, final List<Srt> to)
+    private void copyTimes(final List<Subtitle> from, final List<Subtitle> to)
     {
         // TODO: Spagetti Code:
         // SLA, SRP, SoC
         if (from.size() != to.size())
         {
             int confirmDialogResult = showConfirmDialog(this.getView(), "Not equal number of subtitles! Size1: " + from.size() + ", Size2: " + to.size() + "");
-            if (confirmDialogResult == JOptionPane.OK_OPTION)
+            if (confirmDialogResult != JOptionPane.OK_OPTION)
             {
-                for (int i = 0; i < from.size(); i++)
-                {
-                    if (to.size() > i)
-                    {
-                        to.get(i).setTime(from.get(i).getTime());
-                    }
-                }
+                return;
+            }
+        }
+        for (int i = 0; i < from.size(); i++)
+        {
+            if (to.size() > i)
+            {
+                to.get(i).setTime(from.get(i).getTime());
             }
         }
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import com.jgoodies.binding.adapter.Bindings;
 
-import eu.eyan.srteditor.data.Srt;
+import eu.eyan.srteditor.data.Subtitle;
 import eu.eyan.srteditor.gui.model.SrtModel;
 import eu.eyan.srteditor.gui.view.SrtView;
 import eu.eyan.srteditor.parser.SrtParser;
@@ -21,7 +21,7 @@ public class SrtController
     public SrtController(String path)
     {
         this.path = path;
-        List<Srt> subs = SrtParser.parse(path);
+        List<Subtitle> subs = SrtParser.parse(path);
         updateListNumbers(subs);
         view = new SrtView();
         model = new SrtModel(subs);
@@ -49,8 +49,8 @@ public class SrtController
                             int selectedIndex = view.getSelectedIndex();
                             if (model.getList().getSize() - 1 > selectedIndex)
                             {
-                                Srt srt = model.getList().getList().get(selectedIndex);
-                                Srt next = model.getList().getList().get(selectedIndex + 1);
+                                Subtitle srt = model.getList().getList().get(selectedIndex);
+                                Subtitle next = model.getList().getList().get(selectedIndex + 1);
                                 srt.getLines().addAll(next.getLines());
                                 srt.setTime(srt.getTime().split(" --> ")[0] + " --> " + next.getTime().split(" --> ")[1]);
                                 model.getList().getList().remove(next);
@@ -74,10 +74,10 @@ public class SrtController
         return view;
     }
 
-    private void updateListNumbers(List<Srt> list)
+    private void updateListNumbers(List<Subtitle> list)
     {
         int counter = 1;
-        for (Srt srt : list)
+        for (Subtitle srt : list)
         {
             srt.setIndex(counter++);
         }
@@ -88,7 +88,7 @@ public class SrtController
         SrtParser.save(path, model.getList().getList());
     }
 
-    public List<Srt> getList()
+    public List<Subtitle> getList()
     {
         return model.getList().getList();
     }

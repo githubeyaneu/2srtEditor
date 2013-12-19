@@ -11,14 +11,14 @@ import com.google.common.base.Joiner;
 import com.google.common.base.Strings;
 import com.google.common.io.Files;
 
-import eu.eyan.srteditor.data.Srt;
+import eu.eyan.srteditor.data.Subtitle;
 
 public class SrtParser
 {
 
-    public static List<Srt> parse(final String path)
+    public static List<Subtitle> parse(final String path)
     {
-        List<Srt> ret = newArrayList();
+        List<Subtitle> ret = newArrayList();
         try
         {
             List<String> lines = Files.readLines(new File(path), Charsets.ISO_8859_1);
@@ -34,7 +34,7 @@ public class SrtParser
                 }
                 actualLine++;
 
-                ret.add(new Srt(srtNumber, srtTime, srtLines));
+                ret.add(new Subtitle(srtNumber, srtTime, srtLines));
             }
         }
         catch (IOException e)
@@ -44,7 +44,7 @@ public class SrtParser
         return ret;
     }
 
-    public static void save(final String path, final List<Srt> list)
+    public static void save(final String path, final List<Subtitle> list)
     {
         try
         {
@@ -53,7 +53,7 @@ public class SrtParser
             {
                 Files.deleteRecursively(file);
             }
-            for (final Srt srt : list)
+            for (final Subtitle srt : list)
             {
                 final String separator = "\r\n";
                 final String text = new StringBuilder()
