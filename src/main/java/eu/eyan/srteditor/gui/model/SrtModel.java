@@ -11,7 +11,7 @@ public class SrtModel {
 	private SelectionInList<Subtitle> list;
 
 	public SrtModel(List<Subtitle> subs) {
-		list = new SelectionInList<>(subs);
+		list = new SelectionInList<Subtitle>(subs);
 	}
 
 	public SelectionInList<Subtitle> getList() {
